@@ -1,0 +1,11 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'gamegames/havingfuninstyle.css' %}" />
+
+<title> {{ game.name }} </title>
+
+<h1> {{ game.name }} </h1>
+
+<a href="{% url 'gamegames-list' %}">BACK</a>
+
+<p> {{ game.how_to_play }} </p>

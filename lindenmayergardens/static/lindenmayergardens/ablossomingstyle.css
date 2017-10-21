@@ -1,0 +1,29 @@
+p {
+	color: ForestGreen;
+	margin: 12pt 10% 12pt 100pt;
+}
+h1 {
+	color: SaddleBrown
+}
+/* unvisited link */
+a:link {
+    color: FireBrick;
+}
+
+/* visited link */
+a:visited {
+    color: BlanchedAlmond;
+}
+
+/* mouse over link */
+a:hover {
+    color: Gold;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+body {
+	background-color: LightSkyBLue;
+}

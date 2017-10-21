@@ -1,0 +1,16 @@
+{% load static %} 
+
+<title>The Lindenmayer Gardens</title>
+
+<p>Lindenmayer systems - or L-systems - were conceived as a mathematical model for plant development... </p>
+
+<link rel="stylesheet" type="text/css" href="{% static 'lindenmayergardens/ablossomingstyle.css' %}" />
+
+<h1>Growths on Display:</h1>
+
+<ul>
+{% for an_lsys in lsystem_list %}
+	<li><a href={{ an_lsys.get_absolute_url }}>{{ an_lsys.init_text }}</a></li>
+{% endfor %}
+	<li><a href={% url 'asowing' %}>MAKE NEW</a></li>
+</ul>

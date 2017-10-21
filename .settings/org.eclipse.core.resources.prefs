@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//gamegames/migrations/0001_initial.py=utf-8
+encoding//gamegames/migrations/0002_game_turn_order.py=utf-8
+encoding//gamegames/migrations/0003_auto_20171013_1056.py=utf-8
+encoding//gamegames/migrations/0004_auto_20171018_1608.py=utf-8
+encoding//gamegames/migrations/0005_auto_20171019_1030.py=utf-8
+encoding//gamegames/migrations/0006_move_for_players.py=utf-8
+encoding//gamegames/migrations/0007_remove_game_possible_moves.py=utf-8
+encoding//gamegames/migrations/0008_game_game_ai.py=utf-8

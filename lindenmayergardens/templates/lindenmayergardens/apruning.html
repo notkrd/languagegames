@@ -1,0 +1,32 @@
+{% load static %} 
+
+<title>Pruning {{ lsystem.init_text }}</title>
+
+<link rel="stylesheet" type="text/css"
+	href="{% static 'lindenmayergardens/ablossomingstyle.css' %}" />
+	
+	<a href="{% url 'lindenmayer-list' %}">BACK</a>
+
+<form action="{% url 'apruning-iterations' lsystem_id=lsystem_id num_iterations=num_iterations %}" method="post">
+	{% csrf_token %} 
+	{# Include the hidden fields #}
+	{% for hidden in form.hidden_fields %}
+	{{ hidden }}
+	{% endfor %}
+	{# Include the visible fields #}
+	{% for field in form.visible_fields %}
+	    <div class="fieldWrapper">
+	        <p> {{ field.errors }} </p>
+	        <p> {{ field.label_tag }} </p>
+	        <p> {{ field }} </p>
+	    </div>
+	{% endfor %}
+	<p>
+		<input type="submit" value="Submit" />
+	</p>
+</form>
+<h1>{{ lsystem.init_text }}</h1>
+
+{% for an_iteration in lsystem_iterations %}
+<p>{{ an_iteration }}</p>
+{% endfor %}

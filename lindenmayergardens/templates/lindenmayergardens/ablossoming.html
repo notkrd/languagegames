@@ -1,0 +1,10 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css"
+	href="{% static 'lindenmayergardens/ablossomingstyle.css' %}" />
+
+<h1>{{ lsystem.init_text }}</h1>
+
+{% for an_iteration in lsystem_iterations %}
+<p>{{ an_iteration }}</p>
+{% endfor %}
