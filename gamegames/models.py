@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.postgres.fields import JSONField, ArrayField
+from django.urls import reverse
 
 _GAME_CONTINUES, _GAME_WON, _GAME_LOST, _GAME_DRAWN = range(0,4)
 _GAME_OVER_CHOICES = {
@@ -29,6 +30,9 @@ class Game(models.Model):
     
     game_ai = models.TextField(blank=True, default="")
     
+    def __str__(self):
+        return self.name
+    
     def check_game_state(self):
         for a_cond in self.victory_conditions:
             if a_cond <= self.game_state:
@@ -40,18 +44,24 @@ class Game(models.Model):
             if a_cond <= self.game_state:
                 return _GAME_DRAWN
         return _GAME_CONTINUES
+    
+    def get_absolute_url(self):
+        return reverse('play-gamegame', kwargs={'game_id': self.id})
             
 class Move(models.Model):
     name = models.CharField(max_length=200)
     game = models.ForeignKey(Game,on_delete=models.CASCADE)
     
-    requires = JSONField(default=list())
-    sets = JSONField(default=list())
-    removes = JSONField(default=list())
-    adds = JSONField(default=list())
+    requires = JSONField(default=list(),blank=True)
+    sets = JSONField(default=list(),blank=True)
+    removes = JSONField(default=list(),blank=True)
+    adds = JSONField(default=list(),blank=True)
     
     for_players = ArrayField(base_field=models.BooleanField(), default=[True, True], size=None)
     
+    def __str__(self):
+        return self.name
+        
     def is_valid(self):
         return self.requires <= self.game.game_state
     
@@ -66,3 +76,9 @@ class Move(models.Model):
             self.game.game_state[a_change[0]] += a_change[1]
             
         return self.game.game_state
+
+    def make_move(self):
+        if self.is_valid():
+            new_state = self.consider_move()
+            self.game.game_state = new_state
+            self.game.save()
