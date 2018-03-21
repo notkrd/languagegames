@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from .views import index_view
 
 urlpatterns = [
-    url(r'^lindenmayergardens/', include('lindenmayergardens.urls')),
-    url(r'^gamegames/', include('gamegames.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^lindenmayergardens/', include('lindenmayergardens.urls'), name="lindenmayer-gardening"),
+    url(r'^gamegames/', include('gamegames.urls'), name="gamegameing"),
+    url(r'^fixedwords/', include('fixedwords.urls'), name="justwording"),
+    url(r'^syntacticstrutting/', include('syntacticstrutting.urls'), name="syntacticstrutting"),
+    url(r'^admin/', admin.site.urls, name="admin"),
+    url(r'^$', index_view, name="home")
 ]
 

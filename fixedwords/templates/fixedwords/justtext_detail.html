@@ -1,0 +1,12 @@
+{% load static %}
+
+<p class="nope"><a href="/">HOME</a></p>
+
+<title>{{ a_text.title}} </title>
+
+<h1>{{ a_text.title }}</h1>
+<h2>{{ a_text.author }}</h2>
+
+<a href="{% url 'texts-list' %}">BACK</a>
+
+<pre style="white-space: pre-wrap"> {{ a_text.txt }} </pre>

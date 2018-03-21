@@ -15,5 +15,5 @@ urlpatterns = [
     # ex: /ablossoming/1/prune/
     url(r'^(?P<lsystem_id>[0-9]+)/prune/$', views.apruning, name='apruning'),
     # ex: /ablossoming/1/prune/11
-    url(r'^(?P<lsystem_id>[0-9]+)/(?P<num_iterations>[0-9]+)/prune/$', views.apruning, name='apruning-iterations')
+    url(r'^(?P<lsystem_id>[0-9]+)/prune&iterations=(?P<num_iterations>[0-9]+)/$', views.apruning, name='apruning-iterations')
 ]

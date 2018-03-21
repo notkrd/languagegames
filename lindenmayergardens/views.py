@@ -41,17 +41,19 @@ def apruning(request, lsystem_id, num_iterations=10):
         if form.is_valid():
             new_text = form.cleaned_data['sys_init_text']
             unparsed_lrules = form.cleaned_data['sys_rules']
+            disp_iterations = form.cleaned_data['display_iterations']
             Lrule.objects.filter(lsys = lsystem_id).delete()
             the_lsys.init_text = new_text
             ParseLrules(unparsed_lrules, the_lsys)
             the_lsys.save()
-            return HttpResponseRedirect(reverse('apruning-iterations', kwargs={'lsystem_id': lsystem_id, 'num_iterations': num_iterations}))
+            return HttpResponseRedirect(reverse('apruning-iterations', kwargs={'lsystem_id': lsystem_id, 'num_iterations': disp_iterations}))
         
     elif request.method == 'GET':
         lsys_init_text = the_lsys.init_text
         lsys_str = LrulesToStr(lsystem_id)
         lsys_form_data = {'sys_init_text': lsys_init_text,
-                          'sys_rules': lsys_str}
+                          'sys_rules': lsys_str,
+                          "display_iterations": num_iterations}
         form = LsystemForm(lsys_form_data)
             
     return render(request, 'lindenmayergardens/apruning.html', {'form': form, 'lsystem_id': lsystem_id, 'lsystem': the_lsys, 'num_iterations': num_iterations, 'lsystem_iterations': the_lsys_iterations})
