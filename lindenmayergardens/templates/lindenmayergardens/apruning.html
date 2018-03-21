@@ -4,8 +4,9 @@
 
 <link rel="stylesheet" type="text/css"
 	href="{% static 'lindenmayergardens/ablossomingstyle.css' %}" />
-	
-	<a href="{% url 'lindenmayer-list' %}">BACK</a>
+
+<p class="nope"><a href="/">HOME</a></p>
+<p class="nope"><a href="{% url 'lindenmayer-list' %}">BACK</a></p>
 
 <form action="{% url 'apruning-iterations' lsystem_id=lsystem_id num_iterations=num_iterations %}" method="post">
 	{% csrf_token %} 

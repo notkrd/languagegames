@@ -1,0 +1,12 @@
+{% load static %}
+
+<p class="nope"><a href="/">HOME</a></p>
+
+<title>Just words here</title>
+<h1>Texts available:</h2>
+<ul>
+{% for a_game in justtext_list %}
+	<li><a href={{ a_game.get_absolute_url }}>{{ a_game.title }}</a></li>
+{% endfor %}
+	<li><a href={% url 'new-text' %}>MAKE NEW</a></li>
+</ul>

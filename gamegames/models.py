@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.postgres.fields import JSONField, ArrayField
 from django.urls import reverse
+import random
 
 _GAME_CONTINUES, _GAME_WON, _GAME_LOST, _GAME_DRAWN = range(0,4)
 _GAME_OVER_CHOICES = {
@@ -33,15 +34,23 @@ class Game(models.Model):
     def __str__(self):
         return self.name
     
+    def dict_contains(self, dict1, dict2):
+        for a_key in dict2.keys():
+            if a_key not in dict1:
+                return False
+            elif dict1[a_key] != dict2[a_key]:
+                return False
+        return True
+    
     def check_game_state(self):
         for a_cond in self.victory_conditions:
-            if a_cond <= self.game_state:
+            if self.dict_contains(self.game_state, a_cond):
                 return _GAME_WON
         for a_cond in self.loss_conditions:
-            if a_cond <= self.game_state:
+            if self.dict_contains(self.game_state, a_cond):
                 return _GAME_LOST
         for a_cond in self.draw_conditions:
-            if a_cond <= self.game_state:
+            if self.dict_contains(self.game_state, a_cond):
                 return _GAME_DRAWN
         return _GAME_CONTINUES
     
@@ -52,10 +61,10 @@ class Move(models.Model):
     name = models.CharField(max_length=200)
     game = models.ForeignKey(Game,on_delete=models.CASCADE)
     
-    requires = JSONField(default=list(),blank=True)
-    sets = JSONField(default=list(),blank=True)
-    removes = JSONField(default=list(),blank=True)
-    adds = JSONField(default=list(),blank=True)
+    requires = JSONField(default=dict(),blank=True)
+    sets = JSONField(default=dict(),blank=True)
+    removes = JSONField(default=dict(),blank=True)
+    adds = JSONField(default=dict(),blank=True)
     
     for_players = ArrayField(base_field=models.BooleanField(), default=[True, True], size=None)
     
@@ -63,17 +72,17 @@ class Move(models.Model):
         return self.name
         
     def is_valid(self):
-        return self.requires <= self.game.game_state
+        return self.requires.items() <= self.game.game_state.items()
     
     def consider_move(self):
         for a_change in self.sets:
-            self.game.game_state[a_change[0]] = a_change[1]
+            self.game.game_state[a_change] = self.sets[a_change]
             
         for a_change in self.removes:
             del self.game.game_state[a_change]
             
         for a_change in self.adds:
-            self.game.game_state[a_change[0]] += a_change[1]
+            self.game.game_state[a_change] += self.sets[a_change]
             
         return self.game.game_state
 
@@ -81,4 +90,5 @@ class Move(models.Model):
         if self.is_valid():
             new_state = self.consider_move()
             self.game.game_state = new_state
+            exec(self.game.game_ai)
             self.game.save()

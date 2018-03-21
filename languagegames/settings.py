@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'verbthegreatnoun.apps.VerbthegreatnounConfig',
     'lindenmayergardens.apps.LindenmayergardensConfig',
     'gamegames.apps.GamegamesConfig',
+    'fixedwords.apps.FixedwordsConfig',
+    'syntacticstrutting.apps.SyntacticstruttingConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,11 +56,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'languagegames.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['languagegames'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,7 +69,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-    },
+    }
 ]
 
 WSGI_APPLICATION = 'languagegames.wsgi.application'

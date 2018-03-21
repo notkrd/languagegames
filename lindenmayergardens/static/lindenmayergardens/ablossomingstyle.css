@@ -2,6 +2,10 @@ p {
 	color: ForestGreen;
 	margin: 12pt 10% 12pt 100pt;
 }
+
+p.nope {
+	margin: 0pt 0pt 0pt 0pt;
+}
 h1 {
 	color: SaddleBrown
 }
@@ -19,7 +23,6 @@ a:visited {
 a:hover {
     color: Gold;
 }
-
 /* selected link */
 a:active {
     color: blue;

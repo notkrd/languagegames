@@ -2,11 +2,13 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'gamegames/havingfuninstyle.css' %}" />
 
+<p class="nope"><a href="/">HOME</a></p>
+
 <title>Games! Fun fun fun fun fun!</title>
 <h1>Thrilling Games That YOU Can Play Right Here On The Interface of a Dynamic Website With a Django Backend Running over a Postgres Database</h2>
 <ul>
 {% for a_game in game_list %}
 	<li><a href={{ a_game.get_absolute_url }}>{{ a_game.name }}</a></li>
 {% endfor %}
-	<li><a href={% url 'victory' %}>MAKE NEW</a></li>
+	<li><a href={% url 'make-gamegame' %}>MAKE NEW</a></li>
 </ul>

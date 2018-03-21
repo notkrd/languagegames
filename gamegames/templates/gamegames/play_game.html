@@ -2,10 +2,37 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'gamegames/havingfuninstyle.css' %}" />
 
+<p class="nope"><a href="/">HOME</a></p>
+
+</p><a href="{% url 'gamegames-list' %}">BACK</a></p>
+
 <title> {{ game.name }} </title>
 
 <h1> {{ game.name }} </h1>
 
-<a href="{% url 'gamegames-list' %}">BACK</a>
-
 <p> {{ game.how_to_play }} </p>
+
+<h2> The Board: </h2>
+
+<p> {{ game.game_state }} </p>
+
+</p><a href="{% url 'checkgame' game_id=game.id %}">Have you won yet?</a></p>
+
+<form action="{% url 'play-gamegame' game_id=game.id %}" method="post">
+	{% csrf_token %} 
+	{# Include the hidden fields #}
+	{% for hidden in form.hidden_fields %}
+	{{ hidden }}
+	{% endfor %}
+	{# Include the visible fields #}
+	{% for field in form.visible_fields %}
+	    <div class="fieldWrapper">
+	        <p> {{ field.errors }} </p>
+	        <h2> {{ field.label_tag }} </h2>
+	        <p> {{ field }} </p>
+	    </div>
+	{% endfor %}
+	<p>
+		<input type="submit" value="Submit" />
+	</p>
+</form>

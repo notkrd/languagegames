@@ -1,6 +1,10 @@
 {% load static %}
 <link rel="stylesheet" type="text/css"
 	href="{% static 'lindenmayergardens/ablossomingstyle.css' %}" />
+
+<p><a href="/">HOME</a></p>	
+<a href="{% url 'lindenmayer-list' %}">BACK</a>
+	
 <form action="/lindenmayergardens/sow/" method="post">
 	{% csrf_token %} 
 	{# Include the hidden fields #}
