@@ -1,0 +1,18 @@
+h1{
+	color: red;
+}
+h2{
+	color: Green;
+	margin: 30pt 30pt 30pt 30pt;
+}
+p {
+	font-size: large;
+	color: blue;
+	margin: 30pt 30pt 30pt 30pt;
+}
+p.nope {
+	margin: 0pt 0pt 0pt 0pt;
+}
+body {
+	background-color: Aquamarine;
+}

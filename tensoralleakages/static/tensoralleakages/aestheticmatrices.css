@@ -1,0 +1,27 @@
+p, li, pre {
+	font-size: large;
+	margin: 12pt 10% 12pt 100pt;
+	line-height: 1.5;
+/*  	color: Blue; */
+}
+p.nope {
+	margin: 0pt 0pt 0pt 0pt;
+	line-height: 1;
+}
+.machinic {
+	font-family: "Lucida Console", Monaco, monospace;
+	background-color: Black;
+	color: Lime;
+}
+a {
+	font-size: large;
+}
+br {
+        line-height: 200%;
+}
+h1, h2, h3, h4, h5, h6 {
+/* 	color: Green; */
+}
+body {
+ 	background-color: Grey; 
+}

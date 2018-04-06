@@ -1,0 +1,43 @@
+{% load static %}
+
+<html>
+<head>
+
+<title>{{ rnn.name | force_escape }}</title>
+
+<link rel="stylesheet" type="text/css" href="{% static 'tensoralleakages/aestheticmatrices.css' %}" />
+
+</head>
+
+<body>
+
+<p class="nope"><a href="/">HOME</a> <br />
+<a href="{% url 'rnnreading-list' %}">BACK</a></p>
+
+<h1>{{ rnn.rnn_name | force_escape }}</h1>
+
+<a href="{% static rnn.corpus_path %}">Body Sketched</a>
+
+<h2>Sources read</h2>
+
+<p>
+{{ rnn.corpus_desc | linebreaks }}
+</p>
+
+<h2>Reading Procedure</h2>
+
+<p>
+{{ rnn.reading_procedure | linebreaks }}
+</p>
+
+<h2>Reading's Traces</h2>
+
+<div class="machinic">
+{{ rnn.fanfic | linebreaks }}
+</div>
+
+<p> Neural nets are a liiiEEE </p>
+
+</body>
+
+</html>

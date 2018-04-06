@@ -1,0 +1,21 @@
+{% load static %}
+<html>
+<head>
+
+<title>Tensoral Leakages</title>
+<link rel="stylesheet" type="text/css" href="{% static 'tensoralleakages/aestheticmatrices.css' %}" />
+
+</head>
+<body>
+
+<p class="nope"><a href="/">HOME</a></p>
+
+<h1>Tensoral Leakages: an Anthology of Machinic Fanfiction</h2>
+<ul>
+{% for a_rnn in rnnreading_list %}
+	<li><a href={{ a_rnn.get_absolute_url }}>{{ a_rnn.rnn_name }}</a></li>
+{% endfor %}
+</ul>
+
+</body>
+</html>
