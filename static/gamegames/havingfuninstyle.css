@@ -1,0 +1,16 @@
+h1{
+	color: red;
+}
+h2{
+	color: Green;
+}
+p {
+	color: blue;
+	margin: 12pt 10% 12pt 100pt;
+}
+p.nope {
+	margin: 0pt 0pt 0pt 0pt;
+}
+body {
+	background-color: yellow;
+}

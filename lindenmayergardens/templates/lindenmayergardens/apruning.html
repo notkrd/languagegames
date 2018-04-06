@@ -28,6 +28,8 @@
 </form>
 <h1>{{ lsystem.init_text }}</h1>
 
+<ol>
 {% for an_iteration in lsystem_iterations %}
-<p>{{ an_iteration }}</p>
+<li>{{ an_iteration }}</li>
 {% endfor %}
+</ol>

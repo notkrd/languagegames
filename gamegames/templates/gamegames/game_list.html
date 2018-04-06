@@ -1,10 +1,15 @@
 {% load static %}
+<html>
+<head>
 
+<title>Games! Fun fun fun fun fun!</title>
 <link rel="stylesheet" type="text/css" href="{% static 'gamegames/havingfuninstyle.css' %}" />
+
+</head>
+<body>
 
 <p class="nope"><a href="/">HOME</a></p>
 
-<title>Games! Fun fun fun fun fun!</title>
 <h1>Thrilling Games That YOU Can Play Right Here On The Interface of a Dynamic Website With a Django Backend Running over a Postgres Database</h2>
 <ul>
 {% for a_game in game_list %}
@@ -12,3 +17,6 @@
 {% endfor %}
 	<li><a href={% url 'make-gamegame' %}>MAKE NEW</a></li>
 </ul>
+
+</body>
+</html>

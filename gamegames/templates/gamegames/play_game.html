@@ -1,12 +1,17 @@
 {% load static %}
 
+<html>
+<head>
+
+<title> {{ game.name }} </title>
 <link rel="stylesheet" type="text/css" href="{% static 'gamegames/havingfuninstyle.css' %}" />
+
+</head>
+<body>
 
 <p class="nope"><a href="/">HOME</a></p>
 
 </p><a href="{% url 'gamegames-list' %}">BACK</a></p>
-
-<title> {{ game.name }} </title>
 
 <h1> {{ game.name }} </h1>
 
@@ -36,3 +41,6 @@
 		<input type="submit" value="Submit" />
 	</p>
 </form>
+
+</body>
+</html>

@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^fixedwords/', include('fixedwords.urls'), name="justwording"),
     url(r'^syntacticstrutting/', include('syntacticstrutting.urls'), name="syntacticstrutting"),
     url(r'^admin/', admin.site.urls, name="admin"),
+    url(r'^tensoralleakages/', include('tensoralleakages.urls'), name='leakingtensors'),
     url(r'^$', index_view, name="home")
 ]
 

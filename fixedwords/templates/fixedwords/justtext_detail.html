@@ -1,12 +1,21 @@
 {% load static %}
 
-<p class="nope"><a href="/">HOME</a></p>
+<html>
+<head>
 
+<link rel="stylesheet" type="text/css" href="{% static 'fixedwords/forpublishing.css' %}" />
 <title>{{ a_text.title}} </title>
 
+</head>
+<body>
+
+<p class="nope"><a href="/">HOME</a><br />
+<a href="{% url 'texts-list' %}">BACK</a></p>
 <h1>{{ a_text.title }}</h1>
 <h2>{{ a_text.author }}</h2>
 
-<a href="{% url 'texts-list' %}">BACK</a>
 
-<pre style="white-space: pre-wrap"> {{ a_text.txt }} </pre>
+<p> {{ a_text.txt | linebreaks }} </p>
+
+</body>
+</html>

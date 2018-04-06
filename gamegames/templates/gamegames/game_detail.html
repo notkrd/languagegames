@@ -1,10 +1,16 @@
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'gamegames/havingfuninstyle.css' %}" />
-
-<p class="nope"><a href="/">HOME</a></p>
+<html>
+<head>
 
 <title> {{ game.name }} </title>
+<link rel="stylesheet" type="text/css" href="{% static 'gamegames/havingfuninstyle.css' %}" />
+
+
+</head>
+<body>
+
+<p class="nope"><a href="/">HOME</a></p>
 
 <h1> {{ game.name }} </h1>
 
@@ -13,3 +19,6 @@
 <p> {{ game.how_to_play }} </p>
 
 <a href="{% url 'play-gamegame' game_id=game.id %}">PLAY NOW!!</a>
+
+</body>
+</html>
