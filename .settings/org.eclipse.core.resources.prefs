@@ -7,3 +7,4 @@ encoding//gamegames/migrations/0005_auto_20171019_1030.py=utf-8
 encoding//gamegames/migrations/0006_move_for_players.py=utf-8
 encoding//gamegames/migrations/0007_remove_game_possible_moves.py=utf-8
 encoding//gamegames/migrations/0008_game_game_ai.py=utf-8
+encoding//syntacticstrutting/migrations/0002_auto_20180316_1526.py=utf-8
