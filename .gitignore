@@ -103,4 +103,4 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-/languagegames/settings_secret.py
+settings_secret.py
